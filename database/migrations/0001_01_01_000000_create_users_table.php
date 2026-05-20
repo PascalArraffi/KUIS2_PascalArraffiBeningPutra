@@ -36,7 +36,7 @@ return new class extends Migration
             $table->integer('last_activity')->index();
         });
     }
-
+// pscal
     /**
      * Reverse the migrations.
      */
