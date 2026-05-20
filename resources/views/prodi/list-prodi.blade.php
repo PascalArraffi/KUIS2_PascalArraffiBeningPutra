@@ -1,141 +1,385 @@
 <x-layout>
+
+    <style>
+
+        /* =====================================
+            ROYAL BATIK THEME
+        ===================================== */
+
+        body{
+            background:
+                radial-gradient(circle at top left, rgba(250,204,21,0.08), transparent 25%),
+                radial-gradient(circle at bottom right, rgba(16,185,129,0.12), transparent 25%),
+                linear-gradient(135deg, #052e2b, #064e3b, #022c22);
+
+            background-attachment: fixed;
+
+            font-family: 'Poppins', sans-serif;
+
+            overflow-x: hidden;
+            position: relative;
+
+            color: white;
+        }
+
+        body::before{
+            content: '';
+
+            position: fixed;
+            inset: 0;
+
+            background-image:
+                radial-gradient(circle at 20px 20px, rgba(250,204,21,0.05) 2px, transparent 2px),
+                linear-gradient(45deg, rgba(250,204,21,0.03) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(250,204,21,0.03) 25%, transparent 25%);
+
+            background-size: 60px 60px, 40px 40px, 40px 40px;
+
+            pointer-events: none;
+        }
+
+        /* =====================================
+            ALERT
+        ===================================== */
+
+        .royal-alert{
+            border: 1px solid rgba(16,185,129,0.20);
+            background: rgba(16,185,129,0.10);
+            color: #d1fae5;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .royal-alert .btn-close{
+            filter: invert(1);
+        }
+
+        /* =====================================
+            HEADER
+        ===================================== */
+
+        .page-header{
+            margin-bottom: 35px;
+        }
+
+        .page-title{
+            color: #facc15;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(250,204,21,0.15);
+        }
+
+        .page-subtitle{
+            color: rgba(255,255,255,0.65);
+            font-size: 15px;
+        }
+
+        /* =====================================
+            BUTTON
+        ===================================== */
+
+        .btn-royal{
+            border: none;
+            padding: 14px 24px;
+            border-radius: 18px;
+            font-weight: 700;
+            transition: 0.3s ease;
+        }
+
+        .btn-gold{
+            background: linear-gradient(135deg, #facc15, #eab308);
+            color: #052e2b;
+            box-shadow: 0 12px 24px rgba(250,204,21,0.22);
+        }
+
+        .btn-gold:hover{
+            transform: translateY(-3px);
+        }
+
+        /* =====================================
+            CARD
+        ===================================== */
+
+        .royal-card{
+            border-radius: 32px;
+            overflow: hidden;
+            border: 1px solid rgba(250,204,21,0.12);
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(16px);
+            box-shadow: 0 25px 45px rgba(0,0,0,0.28);
+        }
+
+        /* FIX HEADER (INI YANG DIPERBAIKI) */
+        .royal-header{
+            padding: 28px 35px;
+
+            background: linear-gradient(135deg, #14532d, #064e3b);
+
+            border-bottom: 2px solid rgba(250,204,21,0.25);
+
+            box-shadow: inset 0 -1px 0 rgba(255,255,255,0.05);
+        }
+
+        .royal-header h4{
+            color: #facc15;
+            font-weight: 800;
+            margin: 0;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.35);
+        }
+
+        /* =====================================
+            TABLE
+        ===================================== */
+
+        .table{
+            margin: 0;
+            color: white;
+        }
+
+        .table thead{
+            background: rgba(250,204,21,0.06);
+        }
+
+        .table thead th{
+            border: none;
+            color: #facc15;
+            padding: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .table tbody td{
+            padding: 22px 20px;
+            border-color: rgba(255,255,255,0.06);
+            vertical-align: middle;
+        }
+
+        .table tbody tr{
+            transition: 0.3s ease;
+        }
+
+        .table tbody tr:hover{
+            background: rgba(250,204,21,0.04);
+            transform: scale(1.005);
+        }
+
+        /* =====================================
+            BADGE
+        ===================================== */
+
+        .number-badge{
+            width: 46px;
+            height: 46px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #facc15, #ca8a04);
+            color: #052e2b;
+            font-weight: 800;
+            box-shadow: 0 10px 20px rgba(250,204,21,0.20);
+        }
+
+        .prodi-name{
+            color: white;
+            font-weight: 700;
+        }
+
+        .kaprodi-name{
+            color: rgba(255,255,255,0.70);
+        }
+
+        .alias-badge{
+            display: inline-block;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(250,204,21,0.12);
+            border: 1px solid rgba(250,204,21,0.18);
+            color: #facc15;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        /* =====================================
+            ACTION BUTTON
+        ===================================== */
+
+        .btn-action{
+            border: none;
+            border-radius: 14px;
+            padding: 10px 15px;
+            font-size: 13px;
+            font-weight: 700;
+            transition: 0.25s ease;
+        }
+
+        .btn-action:hover{
+            transform: translateY(-2px);
+        }
+
+        .btn-detail{ background:#0ea5e9; color:white; }
+        .btn-edit{ background:#facc15; color:#052e2b; }
+        .btn-delete{ background:#ef4444; color:white; }
+
+        /* =====================================
+            EMPTY STATE
+        ===================================== */
+
+        .empty-state{
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .empty-state h4{
+            color: #facc15;
+            font-weight: 700;
+        }
+
+        .empty-state p{
+            color: rgba(255,255,255,0.60);
+        }
+
+        /* =====================================
+            FOOTER
+        ===================================== */
+
+        .royal-footer{
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid rgba(250,204,21,0.08);
+            color: rgba(255,255,255,0.60);
+            background: rgba(0,0,0,0.12);
+        }
+
+        /* RESPONSIVE */
+        @media(max-width:768px){
+            .page-title{ font-size:2rem; }
+        }
+
+    </style>
+
     <div class="container py-5">
 
-        {{-- Alert Notifikasi Sukses --}}
+        <!-- ALERT -->
         @if (session('success'))
-            <div class="alert alert-success alert-dismissible fade show rounded-3 shadow-sm mb-4" role="alert">
+            <div class="alert royal-alert alert-dismissible fade show mb-4">
                 ✨ {{ session('success') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             </div>
         @endif
 
-        {{-- Header --}}
-        <div class="d-flex justify-content-between align-items-center mb-4">
+        <!-- HEADER -->
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 page-header">
 
             <div>
-                <h2 class="fw-bold text-primary mb-1">
-                    📚 List Program Studi
-                </h2>
-
-                <p class="text-muted mb-0">
-                    Data seluruh program studi universitas
-                </p>
+                <h1 class="page-title">
+                    👑 Royal Program Studi
+                </h1>
+                <div class="page-subtitle">
+                    Sistem Informasi Program Studi Bernuansa Batik Nusantara
+                </div>
             </div>
 
-            <a href="{{ route('prodi.create') }}" class="btn btn-primary rounded-3 shadow-sm">
-                + Tambah Prodi
+            <a href="{{ route('prodi.create') }}" class="btn btn-royal btn-gold">
+                ➕ Tambah Prodi
             </a>
 
         </div>
 
-        {{-- Card --}}
-        <div class="card border-0 shadow-lg rounded-4">
+        <!-- CARD -->
+        <div class="royal-card">
 
-            <div class="card-body p-4">
+            <!-- HEADER FIXED -->
+            <div class="royal-header">
+                <h4>🏛️ Data Program Studi Universitas</h4>
+            </div>
 
-                <div class="table-responsive">
+            <div class="table-responsive">
 
-                    <table class="table table-hover align-middle">
+                <table class="table align-middle">
 
-                        <thead class="table-primary">
-                            <tr>
-                                <th width="5%">No</th>
-                                <th>Nama Prodi</th>
-                                <th>Nama Kaprodi</th>
-                                <th>Alias / Kode</th>
-                                <th width="30%" class="text-center">Aksi</th>
-                            </tr>
-                        </thead>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama Prodi</th>
+                            <th>Kaprodi</th>
+                            <th>Alias</th>
+                            <th class="text-center">Aksi</th>
+                        </tr>
+                    </thead>
 
-                        <tbody>
+                    <tbody>
 
-                            @forelse ($prodis as $item)
+                        @forelse ($prodis as $item)
 
-                                <tr>
+                        <tr>
 
-                                    <td class="fw-semibold">
-                                        {{ $loop->iteration }}
-                                    </td>
+                            <td>
+                                <div class="number-badge">
+                                    {{ $loop->iteration }}
+                                </div>
+                            </td>
 
-                                    <td>
-                                        <span class="fw-bold text-dark">
-                                            {{ $item->nama_prodi }}
-                                        </span>
-                                    </td>
+                            <td class="prodi-name">
+                                {{ $item->nama_prodi }}
+                            </td>
 
-                                    <td>
-                                        {{ $item->nama_kaprodi }}
-                                    </td>
+                            <td class="kaprodi-name">
+                                👑 {{ $item->nama_kaprodi }}
+                            </td>
 
-                                    <td>
-                                        <span class="badge bg-secondary px-2 py-2 rounded-2">
-                                            {{ $item->alias_prodi }}
-                                        </span>
-                                    </td>
+                            <td>
+                                <span class="alias-badge">
+                                    {{ $item->alias_prodi }}
+                                </span>
+                            </td>
 
-                                    <td class="text-center">
+                            <td>
+                                <div class="d-flex gap-2 justify-content-center">
 
-                                        <div class="d-flex justify-content-center gap-2">
+                                    <a href="{{ route('prodi.show',$item->id) }}" class="btn btn-action btn-detail">👁</a>
 
-                                            {{-- Detail --}}
-                                            <a href="{{ route('prodi.show', $item->id) }}"
-                                               class="btn btn-info btn-sm rounded-3 text-white">
-                                                👁 Detail
-                                            </a>
+                                    <a href="{{ route('prodi.edit',$item->id) }}" class="btn btn-action btn-edit">✏</a>
 
-                                            {{-- Edit --}}
-                                            <a href="{{ route('prodi.edit', $item->id) }}"
-                                               class="btn btn-warning btn-sm rounded-3 text-white">
-                                                ✏ Edit
-                                            </a>
+                                    <form method="POST" action="{{ route('prodi.destroy',$item->id) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-action btn-delete">🗑</button>
+                                    </form>
 
-                                            {{-- Hapus --}}
-                                            <form action="{{ route('prodi.destroy', $item->id) }}" 
-                                                  method="POST"
-                                                  onsubmit="return confirm('Yakin ingin menghapus data prodi ini?')">
+                                </div>
+                            </td>
 
-                                                @csrf
-                                                @method("DELETE")
+                        </tr>
 
-                                                <button type="submit"
-                                                        class="btn btn-danger btn-sm rounded-3">
-                                                    🗑 Hapus
-                                                </button>
+                        @empty
 
-                                            </form>
+                        <tr>
+                            <td colspan="5" class="text-center py-5 empty-state">
+                                <h4>Belum Ada Data</h4>
+                                <p>Program studi masih kosong</p>
+                            </td>
+                        </tr>
 
-                                        </div>
+                        @endforelse
 
-                                    </td>
+                    </tbody>
 
-                                </tr>
-
-                            @empty
-
-                                <tr>
-                                    <td colspan="5" class="text-center py-4 text-muted">
-                                        Data program studi belum tersedia
-                                    </td>
-                                </tr>
-
-                            @endforelse
-
-                        </tbody>
-
-                    </table>
-
-                </div>
+                </table>
 
             </div>
 
-            {{-- Footer --}}
-            <div class="card-footer bg-light text-center rounded-bottom-4">
-                <small class="text-muted">
-                    Sistem Informasi Program Studi
-                </small>
+            <div class="royal-footer">
+                🎓 Royal Academic System — Program Studi Edition
             </div>
 
         </div>
 
     </div>
+
 </x-layout>
